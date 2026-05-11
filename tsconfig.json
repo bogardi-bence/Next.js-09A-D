@@ -31,7 +31,7 @@
     "**/*.mts",
     ".next\\dev/types/**/*.ts",
     ".next\\dev/types/**/*.ts",
-    "app/teglalap/page.tsx.old"
+    "app1/teglalap/page.tsx.old"
   ],
   "exclude": ["node_modules"]
 }
