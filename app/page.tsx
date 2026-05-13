@@ -15,7 +15,7 @@ export default async function KeruletiSebesseg({ searchParams }: { searchParams:
   const keruletisebesseg = (2 * Math.PI * r) / T;
 
   return (
-    <div className="bg-gray-200 flex min-h-screen flex-col items-center justify-center">
+    <div className="bg-red-500 flex min-h-screen flex-col items-left justify-left">
       <div className="w-150 rounded-xl bg-white p-5 font-mono shadow-xl">
         <h1 className="text-2xl font-semibold mb-5 text-center">Kerületi sebesség</h1>
         <form className="space-y-2">
