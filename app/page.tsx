@@ -1,18 +1,40 @@
 type SearchParams = {
   r?: string;
   T?: string;
-}
+};
 
-export default function KeruletiSebesseg({ searchParams }: { searchParams: SearchParams }) {
+export default async function KeruletiSebesseg({ searchParams }: { searchParams: SearchParams }) {
+  const K: SearchParams = await searchParams;
 
-  const r: number = Number(searchParams.r) || 5;
-  const T: number = Number(searchParams.T) || 5;
-  const keruletisebesseg = 2 * Math.PI * r / T;
+  let r: number = Number(K.r) || 5;
+  let T: number = Number(K.T) || 5;
+
+  r = Math.floor(r) !== r ? 5 : r;
+  T = Math.floor(T) !== T ? 5 : T;
+
+  const keruletisebesseg = (2 * Math.PI * r) / T;
 
   return (
-    <div className="flex items-center justify-center flex-col min-h-screen">
-      <h1>Körmozgás Page</h1>
-      <p>v = {keruletisebesseg.toFixed(3)} m/s</p>
+    <div className="bg-gray-200 flex min-h-screen flex-col items-center justify-center">
+      <div className="w-150 rounded-xl bg-white p-5 font-mono shadow-xl">
+        <h1 className="text-2xl font-semibold mb-5 text-center">Kerületi sebesség</h1>
+        <form className="space-y-2">
+          <div>
+            <label className="mr-4">r =</label>
+            <input className="input input-primary" defaultValue={r} name="r" type="text" />
+          </div>
+          <div>
+            <label className="mr-4">T =</label>
+            <input className="input input-primary" defaultValue={T} name="T" type="text" />
+          </div>
+          <div className="mt-4">
+            <p className="text-center text-2xl font-semibold">
+              Kerületi sebesség = {keruletisebesseg.toFixed(2)}
+            </p>
+          </div>
+          <button className="hidden" type="submit"></button>
+        </form>
+      </div>
     </div>
   );
 }
