@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+@keyframes orbit-rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(59, 130, 246, 0.08);
+  animation: orbit-rotate linear infinite;
+}
+
+.orbit-1 { width: 300px;  height: 300px;  animation-duration: 12s;  border-color: rgba(59,130,246,0.13); }
+.orbit-2 { width: 500px;  height: 500px;  animation-duration: 20s;  animation-direction: reverse; border-color: rgba(99,179,237,0.09); }
+.orbit-3 { width: 750px;  height: 750px;  animation-duration: 30s;  border-color: rgba(59,130,246,0.06); }
+.orbit-4 { width: 1050px; height: 1050px; animation-duration: 45s;  animation-direction: reverse; border-color: rgba(59,130,246,0.04); }
+
+.orbit-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 50%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px 4px rgba(59, 130, 246, 0.7);
+}
+
+.orbit-2 .orbit-dot {
+  background: #60a5fa;
+  width: 6px;
+  height: 6px;
+}
