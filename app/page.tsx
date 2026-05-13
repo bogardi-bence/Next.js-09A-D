@@ -3,8 +3,11 @@ type SearchParams = {
     T?: string;
 }
 
-export default function KeruletiSebesseg({ searchParams }) {
-  
+export default function KeruletiSebesseg({
+   searchParams }: {
+    searchParams: SearchParams;
+  }) {
+
   const K = searchParams;
   const r: number = Number(K.r) || 5;
   const T: number = Number(K.T) || 5;   
@@ -15,7 +18,13 @@ export default function KeruletiSebesseg({ searchParams }) {
     <div>
       <div className="flex items-center justify-center flex-col min-h-screen">
         <div className="flex w-80 flex-col items-center ">
-          <h1>KörmozgásPage</h1>
+          
+<form className="flex flex-col gap-4">
+  <p className="text-center text-xl font-semibold">Körmozgás sebessége</p>
+  <div>
+    
+  </div>
+</form>
         </div>
       </div>
     </div>
