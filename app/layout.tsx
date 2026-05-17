@@ -15,7 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Toaster position="bottom-right" toastOptions={{ duration: 5000 }} />
-        { path !== "/" && (<header className="flex items-center pl-3 h-10 bg-blue-400">
+        { path !== "/" && (<header className="flex items-center pl-3 h-10" style={{ backgroundColor: "rgba(41, 39, 110, 1)" }}>
               <Link className="text-white " href={"/"}>Vissza a főmenübe</Link>
         </header>)}
         {children}
