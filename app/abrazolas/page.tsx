@@ -1,5 +1,74 @@
-export default function ComponentName() {
+"use client";
+
+import { useState } from "react";
+
+export default function Abrazolas() {
+  const [r, setR] = useState(5);
+  const [T, setT] = useState(5);
+
+  const keruletisebesseg = (2 * Math.PI * r) / T;
+  const chartWidth = 400;
+  const chartHeight = 200;
+  const padding = 30;
+  const maxR = 20;
+  const maxV = (2 * Math.PI * maxR) / T;
+
+  const points = Array.from({ length: 21 }, (_, i) => {
+    const ri = i;
+    const v = (2 * Math.PI * ri) / T;
+    const x = padding + (ri / maxR) * (chartWidth - padding * 2);
+    const y = chartHeight - padding - (v / maxV) * (chartHeight - padding * 2);
+    return { x, y };
+  });
+
+  const polylinePoints = points.map((p) => `${p.x},${p.y}`).join(" ");
+  const currentX = padding + (Math.min(r, maxR) / maxR) * (chartWidth - padding * 2);
+  const currentY = chartHeight - padding - (Math.min(keruletisebesseg, maxV) / maxV) * (chartHeight - padding * 2);
+
   return (
-    <div>ComponentName</div>
-  )
+    <div
+      className="flex min-h-screen flex-col items-center justify-center"
+      style={{ background: "linear-gradient(rgba(8, 62, 209, 1), rgba(67, 109, 224, 1), white)" }}
+    >
+      <div
+        className="rounded-xl p-6 font-mono shadow-xl"
+        style={{ color: "white", backgroundColor: "rgba(41, 39, 110, 1)", width: "480px" }}
+      >
+        <h1 className="mb-5 text-center text-2xl font-semibold">Ábrázolás — grafikon</h1>
+
+        <div className="flex items-center justify-center gap-6 mb-4">
+          <div className="flex items-center gap-2">
+            <label>r =</label>
+            <input className="input input-primary w-20" value={r} onChange={(e) => setR(Number(e.target.value))} type="number" min={0} max={20} style={{ color: "black" }} />
+          </div>
+          <div className="flex items-center gap-2">
+            <label>T =</label>
+            <input className="input input-primary w-20" value={T} onChange={(e) => setT(Number(e.target.value) || 1)} type="number" min={1} style={{ color: "black" }} />
+          </div>
+        </div>
+
+        <p className="text-center text-lg font-semibold mb-4">v = {keruletisebesseg.toFixed(2)} m/s</p>
+
+        <p className="text-center text-sm mb-2" style={{ color: "rgba(180,180,255,1)" }}>
+          v(r) görbe — T = {T} s
+        </p>
+        <svg width={chartWidth} height={chartHeight} style={{ display: "block", margin: "0 auto" }}>
+          <line x1={padding} y1={chartHeight - padding} x2={chartWidth - padding} y2={chartHeight - padding} stroke="rgba(255,255,255,0.4)" strokeWidth={1} />
+          <line x1={padding} y1={padding} x2={padding} y2={chartHeight - padding} stroke="rgba(255,255,255,0.4)" strokeWidth={1} />
+          <text x={chartWidth - padding + 4} y={chartHeight - padding + 4} fill="rgba(255,255,255,0.6)" fontSize={10}>r</text>
+          <text x={padding - 4} y={padding - 6} fill="rgba(255,255,255,0.6)" fontSize={10}>v</text>
+          <polyline points={polylinePoints} fill="none" stroke="rgba(100, 200, 255, 1)" strokeWidth={2} />
+          {r >= 0 && r <= maxR && (
+            <>
+              <line x1={currentX} y1={chartHeight - padding} x2={currentX} y2={currentY} stroke="rgba(255,220,50,0.5)" strokeWidth={1} strokeDasharray="4,3" />
+              <circle cx={currentX} cy={currentY} r={5} fill="rgba(255,220,50,1)" />
+              <text x={currentX + 7} y={currentY - 6} fill="rgba(255,220,50,1)" fontSize={11}>
+                r={r}, v={keruletisebesseg.toFixed(1)}
+              </text>
+            </>
+          )}
+        </svg>
+      </div>
+    </div>
+  );
 }

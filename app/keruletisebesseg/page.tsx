@@ -22,7 +22,7 @@ export default async function KeruletiSebesseg({ searchParams }: { searchParams:
       >
         <h1 className="mb-5 text-center text-2xl font-semibold">Kerületi sebesség</h1>
         <form className="space-y-2">
-          <div>
+          <div className="flex items-center justify-center">
             <label className="mr-4" style={{ color: "white" }}>
               r =
             </label>
@@ -34,7 +34,7 @@ export default async function KeruletiSebesseg({ searchParams }: { searchParams:
               type="text"
             />
           </div>
-          <div>
+          <div className="flex items-center justify-center">
             <label className="mr-4" style={{ color: "white" }}>
               T =
             </label>
