@@ -3,8 +3,11 @@
 import { useState } from "react";
 
 export default function Abrazolas() {
-  const [r, setR] = useState(5);
-  const [T, setT] = useState(5);
+  const [rInput, setRInput] = useState("5");
+  const [TInput, setTInput] = useState("5");
+
+  const r = parseFloat(rInput) || 0;
+  const T = parseFloat(TInput) || 1;
 
   const keruletisebesseg = (2 * Math.PI * r) / T;
   const chartWidth = 400;
@@ -39,11 +42,11 @@ export default function Abrazolas() {
         <div className="flex items-center justify-center gap-6 mb-4">
           <div className="flex items-center gap-2">
             <label>r =</label>
-            <input className="input input-primary w-20" value={r} onChange={(e) => setR(Number(e.target.value))} type="number" min={0} max={20} style={{ color: "black" }} />
+            <input className="input input-primary w-20" value={rInput} onChange={(e) => setRInput(e.target.value)} type="text" style={{ color: "black" }} />
           </div>
           <div className="flex items-center gap-2">
             <label>T =</label>
-            <input className="input input-primary w-20" value={T} onChange={(e) => setT(Number(e.target.value) || 1)} type="number" min={1} style={{ color: "black" }} />
+            <input className="input input-primary w-20" value={TInput} onChange={(e) => setTInput(e.target.value)} type="text" style={{ color: "black" }} />
           </div>
         </div>
 

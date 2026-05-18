@@ -3,10 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 
 export default function Animacio() {
-  const [r, setR] = useState(5);
-  const [T, setT] = useState(5);
+  const [rInput, setRInput] = useState("5");
+  const [TInput, setTInput] = useState("5");
   const angleRef = useRef(0);
   const [angle, setAngle] = useState(0);
+
+  const r = parseFloat(rInput) || 1;
+  const T = parseFloat(TInput) || 1;
 
   const keruletisebesseg = (2 * Math.PI * r) / T;
   const circleR = Math.min(r * 6, 80);
@@ -46,26 +49,21 @@ export default function Animacio() {
         <div className="flex items-center justify-center gap-6 mb-4">
           <div className="flex items-center gap-2">
             <label>r =</label>
-            <input className="input input-primary w-20" value={r} onChange={(e) => setR(Number(e.target.value))} type="number" min={1} max={13} style={{ color: "black" }} />
+            <input className="input input-primary w-20" value={rInput} onChange={(e) => setRInput(e.target.value)} type="text" style={{ color: "black" }} />
           </div>
           <div className="flex items-center gap-2">
             <label>T =</label>
-            <input className="input input-primary w-20" value={T} onChange={(e) => setT(Number(e.target.value) || 1)} type="number" min={1} style={{ color: "black" }} />
+            <input className="input input-primary w-20" value={TInput} onChange={(e) => setTInput(e.target.value)} type="text" style={{ color: "black" }} />
           </div>
         </div>
 
         <p className="text-center text-lg font-semibold mb-4">v = {keruletisebesseg.toFixed(2)} m/s</p>
 
         <svg width={300} height={300} style={{ display: "block", margin: "0 auto" }}>
-          {/* Pálya */}
           <circle cx={cx} cy={cy} r={circleR} fill="none" stroke="rgba(100,200,255,0.5)" strokeWidth={1.5} />
-          {/* Középpont */}
           <circle cx={cx} cy={cy} r={3} fill="white" />
-          {/* Sugár vonal */}
           <line x1={cx} y1={cy} x2={dotX} y2={dotY} stroke="rgba(255,220,50,0.7)" strokeWidth={1.5} />
-          {/* Mozgó pont */}
           <circle cx={dotX} cy={dotY} r={8} fill="rgba(255,220,50,1)" />
-          {/* Sebességvektor (érintő irány) */}
           <line
             x1={dotX}
             y1={dotY}
