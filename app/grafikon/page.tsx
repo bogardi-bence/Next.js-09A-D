@@ -6,8 +6,8 @@ export default function Abrazolas() {
   const [rInput, setRInput] = useState("5");
   const [TInput, setTInput] = useState("5");
 
-  const r = parseFloat(rInput) || 0;
-  const T = parseFloat(TInput) || 1;
+  const r = parseFloat(rInput) || 5;
+  const T = parseFloat(TInput) || 5;
 
   const keruletisebesseg = (2 * Math.PI * r) / T;
   const chartWidth = 400;
@@ -48,6 +48,7 @@ export default function Abrazolas() {
               style={{ color: "black" }}
               type="text"
               value={rInput}
+              onBlur={() => setRInput(String(r))}
               onChange={(e) => setRInput(e.target.value)}
             />
           </div>
@@ -58,6 +59,7 @@ export default function Abrazolas() {
               style={{ color: "black" }}
               type="text"
               value={TInput}
+              onBlur={() => setTInput(String(T))}
               onChange={(e) => setTInput(e.target.value)}
             />
           </div>

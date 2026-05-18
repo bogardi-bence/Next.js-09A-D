@@ -8,8 +8,8 @@ export default function Animacio() {
   const angleRef = useRef(0);
   const [angle, setAngle] = useState(0);
 
-  const r = parseFloat(rInput) || 1;
-  const T = parseFloat(TInput) || 1;
+  const r = parseFloat(rInput) || 5;
+  const T = parseFloat(TInput) || 5;
 
   const keruletisebesseg = (2 * Math.PI * r) / T;
   const circleR = Math.min(r * 6, 80);
@@ -55,6 +55,7 @@ export default function Animacio() {
               type="text"
               value={rInput}
               onChange={(e) => setRInput(e.target.value)}
+              onBlur={() => setRInput(String(r))}
             />
           </div>
           <div className="flex items-center gap-2">
@@ -65,6 +66,7 @@ export default function Animacio() {
               type="text"
               value={TInput}
               onChange={(e) => setTInput(e.target.value)}
+              onBlur={() => setTInput(String(T))}
             />
           </div>
         </div>
