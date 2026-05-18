@@ -26,7 +26,8 @@ export default function Abrazolas() {
 
   const polylinePoints = points.map((p) => `${p.x},${p.y}`).join(" ");
   const currentX = padding + (Math.min(r, maxR) / maxR) * (chartWidth - padding * 2);
-  const currentY = chartHeight - padding - (Math.min(keruletisebesseg, maxV) / maxV) * (chartHeight - padding * 2);
+  const currentY =
+    chartHeight - padding - (Math.min(keruletisebesseg, maxV) / maxV) * (chartHeight - padding * 2);
 
   return (
     <div
@@ -39,33 +40,83 @@ export default function Abrazolas() {
       >
         <h1 className="mb-5 text-center text-2xl font-semibold">Ábrázolás — grafikon</h1>
 
-        <div className="flex items-center justify-center gap-6 mb-4">
+        <div className="mb-4 flex items-center justify-center gap-6">
           <div className="flex items-center gap-2">
             <label>r =</label>
-            <input className="input input-primary w-20" value={rInput} onChange={(e) => setRInput(e.target.value)} type="text" style={{ color: "black" }} />
+            <input
+              className="input w-20 input-primary"
+              style={{ color: "black" }}
+              type="text"
+              value={rInput}
+              onChange={(e) => setRInput(e.target.value)}
+            />
           </div>
           <div className="flex items-center gap-2">
             <label>T =</label>
-            <input className="input input-primary w-20" value={TInput} onChange={(e) => setTInput(e.target.value)} type="text" style={{ color: "black" }} />
+            <input
+              className="input w-20 input-primary"
+              style={{ color: "black" }}
+              type="text"
+              value={TInput}
+              onChange={(e) => setTInput(e.target.value)}
+            />
           </div>
         </div>
 
-        <p className="text-center text-lg font-semibold mb-4">v = {keruletisebesseg.toFixed(2)} m/s</p>
+        <p className="mb-4 text-center text-lg font-semibold">
+          v = {keruletisebesseg.toFixed(2)} m/s
+        </p>
 
-        <p className="text-center text-sm mb-2" style={{ color: "rgba(180,180,255,1)" }}>
+        <p className="mb-2 text-center text-sm" style={{ color: "rgba(180,180,255,1)" }}>
           v(r) görbe — T = {T} s
         </p>
-        <svg width={chartWidth} height={chartHeight} style={{ display: "block", margin: "0 auto" }}>
-          <line x1={padding} y1={chartHeight - padding} x2={chartWidth - padding} y2={chartHeight - padding} stroke="rgba(255,255,255,0.4)" strokeWidth={1} />
-          <line x1={padding} y1={padding} x2={padding} y2={chartHeight - padding} stroke="rgba(255,255,255,0.4)" strokeWidth={1} />
-          <text x={chartWidth - padding + 4} y={chartHeight - padding + 4} fill="rgba(255,255,255,0.6)" fontSize={10}>r</text>
-          <text x={padding - 4} y={padding - 6} fill="rgba(255,255,255,0.6)" fontSize={10}>v</text>
-          <polyline points={polylinePoints} fill="none" stroke="rgba(100, 200, 255, 1)" strokeWidth={2} />
+        <svg height={chartHeight} style={{ display: "block", margin: "0 auto" }} width={chartWidth}>
+          <line
+            stroke="rgba(255,255,255,0.4)"
+            strokeWidth={1}
+            x1={padding}
+            x2={chartWidth - padding}
+            y1={chartHeight - padding}
+            y2={chartHeight - padding}
+          />
+          <line
+            stroke="rgba(255,255,255,0.4)"
+            strokeWidth={1}
+            x1={padding}
+            x2={padding}
+            y1={padding}
+            y2={chartHeight - padding}
+          />
+          <text
+            fill="rgba(255,255,255,0.6)"
+            fontSize={10}
+            x={chartWidth - padding + 4}
+            y={chartHeight - padding + 4}
+          >
+            r
+          </text>
+          <text fill="rgba(255,255,255,0.6)" fontSize={10} x={padding - 4} y={padding - 6}>
+            v
+          </text>
+          <polyline
+            fill="none"
+            points={polylinePoints}
+            stroke="rgba(100, 200, 255, 1)"
+            strokeWidth={2}
+          />
           {r >= 0 && r <= maxR && (
             <>
-              <line x1={currentX} y1={chartHeight - padding} x2={currentX} y2={currentY} stroke="rgba(255,220,50,0.5)" strokeWidth={1} strokeDasharray="4,3" />
-              <circle cx={currentX} cy={currentY} r={5} fill="rgba(255,220,50,1)" />
-              <text x={currentX + 7} y={currentY - 6} fill="rgba(255,220,50,1)" fontSize={11}>
+              <line
+                stroke="rgba(255,220,50,0.5)"
+                strokeDasharray="4,3"
+                strokeWidth={1}
+                x1={currentX}
+                x2={currentX}
+                y1={chartHeight - padding}
+                y2={currentY}
+              />
+              <circle cx={currentX} cy={currentY} fill="rgba(255,220,50,1)" r={5} />
+              <text fill="rgba(255,220,50,1)" fontSize={11} x={currentX + 7} y={currentY - 6}>
                 r={r}, v={keruletisebesseg.toFixed(1)}
               </text>
             </>

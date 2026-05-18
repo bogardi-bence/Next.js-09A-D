@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Animacio() {
   const [rInput, setRInput] = useState("5");
@@ -23,7 +23,7 @@ export default function Animacio() {
     const tick = (now: number) => {
       const dt = (now - last) / 1000;
       last = now;
-      angleRef.current += (2 * Math.PI) / T * dt;
+      angleRef.current += ((2 * Math.PI) / T) * dt;
       setAngle(angleRef.current);
       animId = requestAnimationFrame(tick);
     };
@@ -46,33 +46,61 @@ export default function Animacio() {
       >
         <h1 className="mb-5 text-center text-2xl font-semibold">Animáció</h1>
 
-        <div className="flex items-center justify-center gap-6 mb-4">
+        <div className="mb-4 flex items-center justify-center gap-6">
           <div className="flex items-center gap-2">
             <label>r =</label>
-            <input className="input input-primary w-20" value={rInput} onChange={(e) => setRInput(e.target.value)} type="text" style={{ color: "black" }} />
+            <input
+              className="input w-20 input-primary"
+              style={{ color: "black" }}
+              type="text"
+              value={rInput}
+              onChange={(e) => setRInput(e.target.value)}
+            />
           </div>
           <div className="flex items-center gap-2">
             <label>T =</label>
-            <input className="input input-primary w-20" value={TInput} onChange={(e) => setTInput(e.target.value)} type="text" style={{ color: "black" }} />
+            <input
+              className="input w-20 input-primary"
+              style={{ color: "black" }}
+              type="text"
+              value={TInput}
+              onChange={(e) => setTInput(e.target.value)}
+            />
           </div>
         </div>
 
-        <p className="text-center text-lg font-semibold mb-4">v = {keruletisebesseg.toFixed(2)} m/s</p>
+        <p className="mb-4 text-center text-lg font-semibold">
+          v = {keruletisebesseg.toFixed(2)} m/s
+        </p>
 
-        <svg width={300} height={300} style={{ display: "block", margin: "0 auto" }}>
-          <circle cx={cx} cy={cy} r={circleR} fill="none" stroke="rgba(100,200,255,0.5)" strokeWidth={1.5} />
-          <circle cx={cx} cy={cy} r={3} fill="white" />
-          <line x1={cx} y1={cy} x2={dotX} y2={dotY} stroke="rgba(255,220,50,0.7)" strokeWidth={1.5} />
-          <circle cx={dotX} cy={dotY} r={8} fill="rgba(255,220,50,1)" />
+        <svg height={300} style={{ display: "block", margin: "0 auto" }} width={300}>
+          <circle
+            cx={cx}
+            cy={cy}
+            fill="none"
+            r={circleR}
+            stroke="rgba(100,200,255,0.5)"
+            strokeWidth={1.5}
+          />
+          <circle cx={cx} cy={cy} fill="white" r={3} />
           <line
-            x1={dotX}
-            y1={dotY}
-            x2={dotX + Math.min(keruletisebesseg * 3, 40) * -Math.sin(angle)}
-            y2={dotY + Math.min(keruletisebesseg * 3, 40) * Math.cos(angle)}
+            stroke="rgba(255,220,50,0.7)"
+            strokeWidth={1.5}
+            x1={cx}
+            x2={dotX}
+            y1={cy}
+            y2={dotY}
+          />
+          <circle cx={dotX} cy={dotY} fill="rgba(255,220,50,1)" r={8} />
+          <line
             stroke="rgba(100,255,150,0.9)"
             strokeWidth={2}
+            x1={dotX}
+            x2={dotX + Math.min(keruletisebesseg * 3, 40) * -Math.sin(angle)}
+            y1={dotY}
+            y2={dotY + Math.min(keruletisebesseg * 3, 40) * Math.cos(angle)}
           />
-          <text x={10} y={290} fill="rgba(180,180,255,0.8)" fontSize={11}>
+          <text fill="rgba(180,180,255,0.8)" fontSize={11} x={10} y={290}>
             r = {r} m | T = {T} s | v = {keruletisebesseg.toFixed(2)} m/s
           </text>
         </svg>
