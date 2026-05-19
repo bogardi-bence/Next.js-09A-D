@@ -51,7 +51,7 @@ export default function Animacio() {
             <label>r =</label>
             <input
               className="input w-20 input-primary"
-              style={{ color: "black" }}
+              style={{ color: "white" }}
               type="text"
               value={rInput}
               onChange={(e) => setRInput(e.target.value)}
@@ -62,7 +62,7 @@ export default function Animacio() {
             <label>T =</label>
             <input
               className="input w-20 input-primary"
-              style={{ color: "black" }}
+              style={{ color: "white" }}
               type="text"
               value={TInput}
               onChange={(e) => setTInput(e.target.value)}

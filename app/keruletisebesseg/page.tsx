@@ -30,7 +30,7 @@ export default async function KeruletiSebesseg({ searchParams }: { searchParams:
               className="input input-primary"
               defaultValue={r}
               name="r"
-              style={{ color: "black" }}
+              style={{ color: "white" }}
               type="text"
             />
           </div>
@@ -42,7 +42,7 @@ export default async function KeruletiSebesseg({ searchParams }: { searchParams:
               className="input input-primary"
               defaultValue={T}
               name="T"
-              style={{ color: "black" }}
+              style={{ color: "white" }}
               type="text"
             />
           </div>

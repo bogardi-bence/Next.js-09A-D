@@ -45,7 +45,7 @@ export default function Abrazolas() {
             <label>r =</label>
             <input
               className="input w-20 input-primary"
-              style={{ color: "black" }}
+              style={{ color: "white" }}
               type="text"
               value={rInput}
               onBlur={() => setRInput(String(r))}
@@ -56,7 +56,7 @@ export default function Abrazolas() {
             <label>T =</label>
             <input
               className="input w-20 input-primary"
-              style={{ color: "black" }}
+              style={{ color: "white" }}
               type="text"
               value={TInput}
               onBlur={() => setTInput(String(T))}
