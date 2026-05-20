@@ -44,8 +44,7 @@ export default function Abrazolas() {
           <div className="flex items-center gap-2">
             <label>r =</label>
             <input
-              className="input w-20 input-primary"
-              style={{ color: "white" }}
+              className="input w-20 input-primary text-white bg-black"
               type="text"
               value={rInput}
               onBlur={() => setRInput(String(r))}
@@ -55,8 +54,7 @@ export default function Abrazolas() {
           <div className="flex items-center gap-2">
             <label>T =</label>
             <input
-              className="input w-20 input-primary"
-              style={{ color: "white" }}
+              className="input w-20 input-primary text-white bg-black"
               type="text"
               value={TInput}
               onBlur={() => setTInput(String(T))}

@@ -27,10 +27,9 @@ export default async function KeruletiSebesseg({ searchParams }: { searchParams:
               r =
             </label>
             <input
-              className="input input-primary"
+              className="input input-primary text-white bg-black"
               defaultValue={r}
               name="r"
-              style={{ color: "white" }}
               type="text"
             />
           </div>
@@ -39,10 +38,9 @@ export default async function KeruletiSebesseg({ searchParams }: { searchParams:
               T =
             </label>
             <input
-              className="input input-primary"
+              className="input input-primary text-white bg-black"
               defaultValue={T}
               name="T"
-              style={{ color: "white" }}
               type="text"
             />
           </div>

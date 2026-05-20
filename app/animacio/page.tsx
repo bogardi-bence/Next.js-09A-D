@@ -50,8 +50,7 @@ export default function Animacio() {
           <div className="flex items-center gap-2">
             <label>r =</label>
             <input
-              className="input w-20 input-primary"
-              style={{ color: "white" }}
+              className="input w-20 input-primary text-white bg-black"
               type="text"
               value={rInput}
               onChange={(e) => setRInput(e.target.value)}
@@ -61,8 +60,7 @@ export default function Animacio() {
           <div className="flex items-center gap-2">
             <label>T =</label>
             <input
-              className="input w-20 input-primary"
-              style={{ color: "white" }}
+              className="input w-20 input-primary text-white bg-black"
               type="text"
               value={TInput}
               onChange={(e) => setTInput(e.target.value)}
