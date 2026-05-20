@@ -37,12 +37,12 @@ export default function Animacio() {
 
   return (
     <div
-      className="flex min-h-screen flex-col items-center justify-center"
+      className="flex min-h-screen flex-col items-center justify-center px-4"
       style={{ background: "linear-gradient(rgba(8, 62, 209, 1), rgba(67, 109, 224, 1), white)" }}
     >
       <div
-        className="rounded-xl p-6 font-mono shadow-xl"
-        style={{ color: "white", backgroundColor: "rgba(41, 39, 110, 1)", width: "360px" }}
+        className="w-full max-w-[360px] rounded-xl p-6 font-mono shadow-xl"
+        style={{ color: "white", backgroundColor: "rgba(41, 39, 110, 1)" }}
       >
         <h1 className="mb-5 text-center text-2xl font-semibold">Animáció</h1>
 
@@ -50,21 +50,21 @@ export default function Animacio() {
           <div className="flex items-center gap-2">
             <label>r =</label>
             <input
-              className="input w-20 input-primary text-white bg-black"
+              className="input w-20 bg-black text-white input-primary"
               type="text"
               value={rInput}
-              onChange={(e) => setRInput(e.target.value)}
               onBlur={() => setRInput(String(r))}
+              onChange={(e) => setRInput(e.target.value)}
             />
           </div>
           <div className="flex items-center gap-2">
             <label>T =</label>
             <input
-              className="input w-20 input-primary text-white bg-black"
+              className="input w-20 bg-black text-white input-primary"
               type="text"
               value={TInput}
-              onChange={(e) => setTInput(e.target.value)}
               onBlur={() => setTInput(String(T))}
+              onChange={(e) => setTInput(e.target.value)}
             />
           </div>
         </div>
@@ -73,7 +73,12 @@ export default function Animacio() {
           v = {keruletisebesseg.toFixed(2)} m/s
         </p>
 
-        <svg height={300} style={{ display: "block", margin: "0 auto" }} width={300}>
+        {/* viewBox + width="100%" makes the animation scale on small screens */}
+        <svg
+          viewBox="0 0 300 300"
+          width="100%"
+          style={{ display: "block", margin: "0 auto" }}
+        >
           <circle
             cx={cx}
             cy={cy}

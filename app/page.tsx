@@ -39,11 +39,11 @@ function AnimatedLink({ href, label }: LinkType) {
 export default function KeruletiSebesseg() {
   return (
     <div
-      className="flex min-h-screen flex-col items-center justify-center"
+      className="flex min-h-screen flex-col items-center justify-center px-4"
       style={{ background: "linear-gradient(rgba(8, 62, 209, 1), rgba(67, 109, 224, 1), white)" }}
     >
       <div
-        className="w-150 rounded-xl p-5 font-mono shadow-xl"
+        className="w-full max-w-lg rounded-xl p-5 font-mono shadow-xl"
         style={{ color: "white", backgroundColor: "rgba(41, 39, 110, 1)" }}
       >
         <h1 className="mb-5 text-center text-2xl font-semibold">Kerületi sebesség</h1>

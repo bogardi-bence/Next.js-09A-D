@@ -31,12 +31,12 @@ export default function Abrazolas() {
 
   return (
     <div
-      className="flex min-h-screen flex-col items-center justify-center"
+      className="flex min-h-screen flex-col items-center justify-center px-4"
       style={{ background: "linear-gradient(rgba(8, 62, 209, 1), rgba(67, 109, 224, 1), white)" }}
     >
       <div
-        className="rounded-xl p-6 font-mono shadow-xl"
-        style={{ color: "white", backgroundColor: "rgba(41, 39, 110, 1)", width: "480px" }}
+        className="w-full max-w-[480px] rounded-xl p-6 font-mono shadow-xl"
+        style={{ color: "white", backgroundColor: "rgba(41, 39, 110, 1)" }}
       >
         <h1 className="mb-5 text-center text-2xl font-semibold">Ábrázolás — grafikon</h1>
 
@@ -70,7 +70,12 @@ export default function Abrazolas() {
         <p className="mb-2 text-center text-sm" style={{ color: "rgba(180,180,255,1)" }}>
           v(r) görbe — T = {T} s
         </p>
-        <svg height={chartHeight} style={{ display: "block", margin: "0 auto" }} width={chartWidth}>
+        {/* width="100%" + viewBox makes SVG scale on all screens */}
+        <svg
+          viewBox={`0 0 ${chartWidth} ${chartHeight}`}
+          width="100%"
+          style={{ display: "block", margin: "0 auto" }}
+        >
           <line
             stroke="rgba(255,255,255,0.4)"
             strokeWidth={1}
