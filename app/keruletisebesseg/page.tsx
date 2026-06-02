@@ -1,15 +1,31 @@
 type SearchParams = {
   r?: string;
-  T?: string;
+  adat?: string;
+  tipus?: string;
 };
 
 export default async function KeruletiSebesseg({ searchParams }: { searchParams: SearchParams }) {
   const K: SearchParams = await searchParams;
   let r: number = Number(K.r) || 5;
-  let T: number = Number(K.T) || 5;
   r = Math.floor(r) !== r ? 5 : r;
-  T = Math.floor(T) !== T ? 5 : T;
-  const keruletisebesseg = (2 * Math.PI * r) / T;
+
+  const tipus = K.tipus || "T";
+const adat = Number(K.adat) || 5;
+
+let keruletisebesseg = 0;
+
+if (tipus === "T") {
+  keruletisebesseg = (2 * Math.PI * r) / adat;
+}
+
+if (tipus === "f") {
+  keruletisebesseg = 2 * Math.PI * r * adat;
+}
+
+if (tipus === "w") {
+  keruletisebesseg = r * adat;
+}
+ 
 
   return (
     <div
@@ -27,20 +43,26 @@ export default async function KeruletiSebesseg({ searchParams }: { searchParams:
               r =
             </label>
             <input
-              className="input input-primary text-white bg-black"
+              className="input bg-black text-white input-primary"
               defaultValue={r}
               name="r"
               type="text"
             />
           </div>
           <div className="flex items-center justify-center">
-            <label className="mr-4" style={{ color: "white" }}>
-              T =
+            <label className="select mr-4 bg-black text-white select-primary">
+              <select defaultValue={tipus} name="tipus">
+                <option value="T">Periódusidő (T)</option>
+                <option value="f">Fordulatszám (f)</option>
+                <option value="w">Szögsebesség (ω)</option>
+              </select>
+              
             </label>
+            <a>=</a>
             <input
-              className="input input-primary text-white bg-black"
-              defaultValue={T}
-              name="T"
+              className="input bg-black text-white input-primary"
+              defaultValue={adat}
+              name="adat"
               type="text"
             />
           </div>
