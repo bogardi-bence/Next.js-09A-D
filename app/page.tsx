@@ -7,7 +7,6 @@ type LinkType = { href: string; label: string };
 
 const links: LinkType[] = [
   { href: "/keruletisebesseg", label: "Kerületi sebesség" },
-  { href: "/grafikon", label: "Ábrázolás Grafikonokkal" },
   { href: "/animacio", label: "Ábrázolás Animációval" },
 ];
 
